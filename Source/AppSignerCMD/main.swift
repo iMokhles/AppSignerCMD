@@ -19,10 +19,10 @@ let signCertName = StringOption(shortFlag: "s", longFlag: "certName", required: 
 let proProfile = StringOption(shortFlag: "p", longFlag: "provisioningProfile", required: true,
     helpMessage: "Path to the mobileprovision file.")
 
-let newBundleID = StringOption(shortFlag: "i", longFlag: "appID", required: false,
+let newBundleID = StringOption(shortFlag: "i", longFlag: "appID", required: true,
     helpMessage: "exmple: com.imokhles.xxxx")
 
-let newAppName = StringOption(shortFlag: "n", longFlag: "appName", required: false,
+let newAppName = StringOption(shortFlag: "n", longFlag: "appName", required: true,
     helpMessage: "exmple: iMDownloader")
 
 let outFilePath = StringOption(shortFlag: "o", longFlag: "outfile", required: true,
@@ -52,11 +52,13 @@ do {
 
 var mainView = CommandFunction()
 
-mainView.ipaFilePath = filePath.value!
-mainView.certName = signCertName.value!
-mainView.profileFilePath = proProfile.value!
-mainView.newBundleID = newBundleID.value
-mainView.newAppName = newAppName.value
-mainView.outputFile = outFilePath.value!
-
-mainView.signingThread()
+if ((filePath.value) != nil) {
+    mainView.ipaFilePath = filePath.value!
+    mainView.certName = signCertName.value!
+    mainView.profileFilePath = proProfile.value!
+    mainView.newBundleID = newBundleID.value
+    mainView.newAppName = newAppName.value
+    mainView.outputFile = outFilePath.value!
+    
+    mainView.signingThread()
+}
