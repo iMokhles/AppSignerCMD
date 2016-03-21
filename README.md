@@ -26,7 +26,7 @@ Usage: ./AppSignerCMD [options]
       Print verbose messages. Specify multiple times to increase verbosity.
 ```
 
-Usage
+Note
 ------
 
 code isn't fully clean ( if you want clean it do it and create new pull request )
